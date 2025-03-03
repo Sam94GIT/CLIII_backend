@@ -1,0 +1,11 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <h3>Student Form</h3>
+    {{ student_form.as_p }}
+
+    <h3>City Form</h3>
+    {{ city_form.as_p }}
+
+    <input type="submit" value="Submit">
+</form>
