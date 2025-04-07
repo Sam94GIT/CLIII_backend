@@ -3,12 +3,14 @@ from django.db import models
 # Create your models here.
 
 class Author(models.Model):
+    id = models.AutoField(primary_key=True,default=1)
     authorname = models.CharField(max_length=200)
 
     def __str__(self):
         return self.authorname
 
 class Book(models.Model):
+    id = models.AutoField(primary_key=True,default=1)
     title = models.CharField(max_length=200)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     publicationdate = models.DateField()
@@ -19,6 +21,7 @@ class Book(models.Model):
 
 
 class Student(models.Model):
+    id = models.AutoField(primary_key=True,default=1)
     Studentname = models.CharField(max_length=200)
     emailid = models.EmailField(max_length=254)
     borrowlimit = models.PositiveIntegerField(default=5)
@@ -27,6 +30,7 @@ class Student(models.Model):
         return self.Studentname
 
 class BorrowingTransaction(models.Model):
+    id = models.AutoField(primary_key=True,default=1)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     borrowdate = models.DateField()

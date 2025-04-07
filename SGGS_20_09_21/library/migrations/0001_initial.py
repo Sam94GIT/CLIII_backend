@@ -16,14 +16,12 @@ class Migration(migrations.Migration):
             name='Author',
             fields=[
                 ('authorname', models.CharField(max_length=200)),
-                ('authorid', models.AutoField(primary_key=True, serialize=False)),
             ],
         ),
         migrations.CreateModel(
             name='Student',
             fields=[
                 ('Studentname', models.CharField(max_length=200)),
-                ('Studentid', models.AutoField(primary_key=True, serialize=False)),
                 ('emailid', models.EmailField(max_length=254)),
                 ('borrowlimit', models.PositiveIntegerField(default=5)),
             ],
@@ -33,14 +31,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('title', models.CharField(max_length=200)),
                 ('publicationdate', models.DateField()),
-                ('bookid', models.PositiveIntegerField(primary_key=True, serialize=False)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='library.author')),
             ],
         ),
         migrations.CreateModel(
             name='BorrowingTransaction',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('borrowdate', models.DateField()),
                 ('returndate', models.DateField()),
                 ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='library.book')),
